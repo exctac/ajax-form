@@ -5,6 +5,8 @@ $(document).ready(function () {
         type: 'post',
         success: function(responseText, statusText, xhr, $form) {
             if (responseText['result'] == 'success') {
+                $form.prev('.alert').remove()
+                $form.find('.invalid-feedback').remove()
                 $form
                     .before(
                         '<div class="alert alert-success" role="alert">' +
@@ -12,13 +14,13 @@ $(document).ready(function () {
                                 '<span aria-hidden="true">&times;</span>' +
                             '</button>' + responseText['response'] +
                         '</div>')
-                    .find('input').removeClass('is-invalid').val('')
+                    .find('.form-group input').removeClass('is-invalid').val('')
             }
             else if (responseText['result'] == 'error') {
                 $form.find('.invalid-feedback').remove()
+                $form.prev('.alert').remove()
                 $form.find('input').removeClass('is-invalid')
                 for (var k in responseText['response']) {
-                    console.log(responseText['response'])
                     $form
                         .find('input[name=' + k + ']')
                         .addClass('is-invalid')
