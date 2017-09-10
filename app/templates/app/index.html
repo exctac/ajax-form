@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+</head>
+<body>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col col-sm-8 col-md-7 col-lg-5">
+        <form class="card text-center" action="{% url 'app:index' %}">
+          {% csrf_token %}
+          <div class="card-header">Form</div>
+          <div class="card-body">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
+                {{ form.first_name }}
+                {{ form.last_name }}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></div>
+                {{ form.email }}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-fw fa-phone"></i></div>
+                {{ form.phone }}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></div>
+                {{ form.birthday }}
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary small">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.inputmask.bundle.min.js' %}"></script>
+<script src="{% static 'js/jquery.form.min.js' %}"></script>
+<script src="{% static 'js/js.js' %}"></script>
+</body>
+</html>
